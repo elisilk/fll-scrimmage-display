@@ -50,15 +50,15 @@ Users should be able to:
 
 Known issues (specific areas that the solution should be improved):
 
-Hmm 🤔 ...
+- [ ] scrolling
 
-Feature requests (specific enhancements to make):
+Feature requests (enhancements to consider making):
 
 Hmm 🤔 ...
 
 ### Related resources
 
-- [Event Hub Official Scoring Calculator for Unearthed](https://eventhub.firstinspires.org/scoresheet)
+- [FIRST Event Hub Official Scoring Calculator for Unearthed](https://eventhub.firstinspires.org/scoresheet)
 - [FIRST LEGO League (FLL)](https://www.firstlegoleague.org/)
 
 ## Acknowledgements

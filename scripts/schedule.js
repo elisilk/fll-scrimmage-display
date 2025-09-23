@@ -234,6 +234,7 @@ function updateMatchScheduleModifiers() {
   currentMatchRow.classList.add('current');
   currentMatchRow.scrollIntoView({
     behavior: 'smooth',
+    container: 'nearest',
     block: 'start',
     inline: 'nearest',
   });
