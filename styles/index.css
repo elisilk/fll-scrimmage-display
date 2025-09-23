@@ -1,0 +1,298 @@
+/* -------------------- */
+/* Breakpoints          */
+/* -------------------- */
+
+/* Media query breakpoints (min-widths) */
+
+/* 26rem = 416px -- mobile -> larger mobile */
+/* 46rem = 736px -- mobile -> tablet */
+/* 60rem = 960px -- tablet -> desktop */
+
+/* Fluid min -> max viewport sizes */
+
+/* (m) mobile -> (t) tablet */
+/* 25rem = 400px */
+/* 45rem = 720px */
+
+/* (t) tablet -> (d) desktop */
+/* 50rem = 800px */
+/* 62rem = 992px */
+
+/* viewport: mobile -> tablet */
+/* @media (min-width: 46rem) {
+  :root {
+  }
+} */
+
+/* viewport: tablet -> desktop */
+/* @media (min-width: 60rem) {
+  :root {
+  }
+} */
+
+/* -------------------- */
+/* Custom properties    */
+/* -------------------- */
+
+:root {
+  --main-gutter: 2rem;
+
+  /* pico overrides */
+  --pico-grid-column-gap: 3rem;
+}
+
+/* ---------------------- */
+/* Main Layout / Sections */
+/* ---------------------- */
+
+.main-layout {
+  max-inline-size: calc(100% - 2 * var(--main-gutter));
+  display: grid;
+  grid-template-areas:
+    'timer'
+    'current'
+    'schedule';
+  grid-column-gap: 3rem;
+  grid-row-gap: 2rem;
+}
+
+/* viewport: tablet -> desktop */
+@media (min-width: 60rem) {
+  .main-layout {
+    grid-template-areas:
+      'timer schedule'
+      'current schedule';
+  }
+}
+
+.section--timer {
+  grid-area: timer;
+}
+
+.section--current {
+  grid-area: current;
+}
+
+.section--schedule {
+  grid-area: schedule;
+}
+
+/* -------------------- */
+/* Timer                */
+/* -------------------- */
+
+.timer__container {
+  display: grid;
+  place-content: center;
+}
+
+.timer {
+  font-size: clamp(6rem, 3.913rem + 10.435vw, 12rem);
+  line-height: 1;
+  margin-block-end: 2rem;
+}
+
+.timer--ended {
+  animation: end-animation 1s forwards;
+  color: red;
+}
+
+@keyframes end-animation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* -------------------- */
+/* Timer Buttons        */
+/* -------------------- */
+
+.timer__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.timer__controls [type='button'] {
+  margin-block-end: 0;
+}
+
+.btn svg {
+  block-size: 1.5rem;
+}
+
+.section--timer:has([data-status='playing']) .icon--play,
+.section--timer:has([data-status='done']) .icon--play {
+  display: none;
+}
+
+.section--timer:has([data-status='ready']) .icon--pause,
+.section--timer:has([data-status='paused']) .icon--pause,
+.section--timer:has([data-status='done']) .icon--pause {
+  display: none;
+}
+
+.section--timer:has([data-status='ready']) .icon--restart,
+.section--timer:has([data-status='playing']) .icon--restart,
+.section--timer:has([data-status='paused']) .icon--restart {
+  display: none;
+}
+
+/* -------------------- */
+/* Dialog               */
+/* -------------------- */
+
+@keyframes countdown-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dialog article {
+  background: transparent;
+  font-size: 10rem;
+  font-weight: bold;
+  text-align: center;
+  animation: countdown-animation 1s infinite;
+}
+
+/* -------------------- */
+/* Current Match        */
+/* -------------------- */
+
+.current-match {
+  display: grid;
+  grid-template-areas:
+    'match match match'
+    'sideA vs sideB';
+  grid-row-gap: 1rem;
+  margin-block-end: 2rem;
+}
+
+.current-match__num {
+  grid-area: match;
+  justify-self: center;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.current-match__side {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.current-match__side span {
+  display: block;
+}
+
+.current-match__sideA {
+  grid-area: sideA;
+}
+
+.current-match__sideB {
+  grid-area: sideB;
+}
+
+.current-match__vs {
+  grid-area: vs;
+  place-self: center;
+  font-size: 2rem;
+}
+
+/* -------------------- */
+/* Match Schedule       */
+/* -------------------- */
+
+.schedule__container {
+  max-block-size: 600px;
+  overflow-y: auto;
+  scroll-padding-block-start: 90px;
+  position: relative; /* Important for sticky positioning */
+  margin-block-end: 2rem;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.schedule__container::-webkit-scrollbar {
+  display: none;
+}
+
+.schedule__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.schedule__body span {
+  display: block;
+}
+
+.schedule th,
+.schedule td {
+  text-align: center;
+}
+
+.current th,
+.current td {
+  color: var(--pico-primary-inverse);
+  background-color: var(--pico-primary-background);
+}
+
+.next th,
+.next td {
+  color: var(--pico-secondary-inverse);
+  background-color: var(--pico-secondary-background);
+}
+
+.schedule__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.schedule__controls > *,
+.schedule__controls > input {
+  margin-block-end: 0;
+}
+
+.schedule__controls > input {
+  text-align: center;
+  inline-size: 5rem;
+}
+
+/* -------------------- */
+/* Utility classes      */
+/* -------------------- */
+
+/* screen reader only */
+
+.sr-only {
+  position: absolute;
+  width: 0.0625rem; /* 1px */
+  height: 0.0625rem; /* 1px */
+  padding: 0;
+  margin: -0.0625rem; /* -1px */
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/BrooklineBots-Square-32x32.png"
+    />
+
+    <meta
+      name="description"
+      content="Brookline Robotics Initiative (BRI) FIRST LEGO League (FLL) scrimmage timer and schedule app for large-scale display of the current match and queue of upcoming matches."
+    />
+    <meta property="og:title" content="FLL Scrimmage Display" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://elisilk.github.io/fll-scrimmage-display/"
+    />
+    <meta
+      property="og:image"
+      content="https://elisilk.github.io/fll-scrimmage-display/images/fll-scrimmage-display-share-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="The main projected display for an FLL scrimmage sharing the robot game time and match schedule."
+    />
+
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="styles/pico/pico.min.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+
+    <script type="module" src="scripts/timer.js"></script>
+    <script type="module" src="scripts/schedule.js"></script>
+
+    <title>FLL Scrimmage Display - Brookline Robotics Initiative</title>
+  </head>
+
+  <body>
+    <main class="container main-layout">
+      <h1 class="sr-only">FLL Scrimmage Display</h1>
+
+      <section
+        class="section--timer"
+        aria-labelledby="section-heading-game-timer"
+      >
+        <h2 id="section-heading-game-timer" class="sr-only">Game Timer</h2>
+
+        <div class="timer__container">
+          <kbd
+            class="timer"
+            role="timer"
+            aria-live="off"
+            data-status="ready"
+          ></kbd>
+        </div>
+
+        <div class="timer__controls">
+          <button class="btn btn--start-match" type="button">Start</button>
+
+          <button class="btn btn--play-pause-restart" type="button">
+            <svg
+              class="icon icon--play"
+              role="img"
+              aria-label="Play the timer"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+            >
+              <title>Play the timer</title>
+              <!-- !Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M147.6 101.6C135.5 108.8 128 121.9 128 136L128 504C128 518.1 135.5 531.2 147.6 538.4C159.7 545.6 174.8 545.9 187.2 539.1L523.2 355.1C536 348.1 544 334.6 544 320C544 305.4 536 291.9 523.2 284.9L187.2 100.9C174.8 94.1 159.8 94.4 147.6 101.6zM176 490.5L176 149.5L487.3 320L176 490.5z"
+              />
+            </svg>
+            <svg
+              class="icon icon--pause"
+              role="img"
+              aria-label="Pause the timer"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+            >
+              <title>Pause the timer</title>
+              <!-- !Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M176 144L176 496L240 496L240 144L176 144zM128 144C128 117.5 149.5 96 176 96L240 96C266.5 96 288 117.5 288 144L288 496C288 522.5 266.5 544 240 544L176 544C149.5 544 128 522.5 128 496L128 144zM400 144L400 496L464 496L464 144L400 144zM352 144C352 117.5 373.5 96 400 96L464 96C490.5 96 512 117.5 512 144L512 496C512 522.5 490.5 544 464 544L400 544C373.5 544 352 522.5 352 496L352 144z"
+              />
+            </svg>
+            <svg
+              class="icon icon--restart"
+              role="img"
+              aria-label="Restart the timer"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+            >
+              <title>Restart the timer</title>
+              <!-- !Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M78.8 65.8C87.8 62.1 98.1 64.2 105 71L156.8 122.8C257.4 39.3 406.9 44.7 501.1 139C601.1 239 601.1 401.1 501.1 501C401.1 600.9 239 601 139.1 501C124.2 486.1 111.5 469.8 101 452.5C94.1 441.2 97.8 426.4 109.1 419.5C120.4 412.6 135.2 416.3 142.1 427.6C150.6 441.6 160.9 454.9 173.1 467C254.3 548.2 386 548.2 467.3 467C548.6 385.8 548.5 254.1 467.3 172.8C391.8 97.3 272.7 92 191.1 156.8L241.1 207C248 213.9 250 224.2 246.3 233.2C242.6 242.2 233.8 248 224.1 248L88 248C74.7 248 64 237.3 64 224L64 88C64 78.3 69.8 69.5 78.8 65.8zM112 145.9L112 200L166.1 200L112 145.9z"
+              />
+            </svg>
+          </button>
+
+          <button
+            class="btn btn--timer-preset"
+            type="button"
+            data-time="150"
+            aria-label="Set timer to 2 minutes and 30 seconds"
+          >
+            2:30
+          </button>
+          <button
+            class="btn--timer-preset"
+            type="button"
+            data-time="5"
+            aria-label="Set timer to 5 seconds"
+          >
+            0:05
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="section--current"
+        aria-labelledby="section-heading-current-match"
+      >
+        <h2 id="section-heading-current-match">
+          Current Match: <span class="current-match__number"></span>
+        </h2>
+        <div class="current-match"></div>
+      </section>
+
+      <section
+        class="section--schedule"
+        aria-labelledby="section-heading-match-schedule"
+      >
+        <h2 id="section-heading-match-schedule">Match Schedule</h2>
+
+        <div class="schedule__container">
+          <table class="schedule">
+            <thead class="schedule__header">
+              <tr>
+                <th scope="col">Match #</th>
+                <th scope="col">Scheduled Time</th>
+                <th scope="col">Red Side</th>
+                <th scope="col">Blue Side</th>
+              </tr>
+            </thead>
+            <tbody class="schedule__body"></tbody>
+          </table>
+        </div>
+
+        <form class="schedule__controls">
+          <button class="btn btn--previous-match" type="button">
+            <svg
+              class="icon icon--previous-match"
+              role="img"
+              aria-label="Return to previous match"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+            >
+              <title>Return to previous match</title>
+              <!-- !Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M206.6 320L464 489.2L464 150.8L206.6 320zM491 539.2C478.1 546.2 462.3 545.5 450 537.4L176 357.4L176 520C176 533.3 165.3 544 152 544C138.7 544 128 533.3 128 520L128 120C128 106.7 138.7 96 152 96C165.3 96 176 106.7 176 120L176 282.7L450 102.6C462.3 94.5 478 93.8 491 100.8C504 107.8 512 121.3 512 136L512 504C512 518.7 503.9 532.2 491 539.2z"
+              />
+            </svg>
+          </button>
+
+          <input
+            type="number"
+            class="schedule__input"
+            id="current-match-number"
+            name="current-match-number"
+            min="1"
+            value="1"
+            aria-label="Current Match Number"
+          />
+
+          <button class="btn btn--next-match" type="button">
+            <svg
+              class="icon icon--next-match"
+              role="img"
+              aria-label="Advance to next match"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+            >
+              <title>Advance to next match</title>
+              <!-- !Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M488 96C474.7 96 464 106.7 464 120L464 282.7L190 102.6C177.7 94.5 162 93.8 149 100.8C136 107.8 128 121.3 128 136L128 504C128 518.7 136.1 532.2 149 539.2C161.9 546.2 177.7 545.5 190 537.4L464 357.4L464 520C464 533.3 474.7 544 488 544C501.3 544 512 533.3 512 520L512 120C512 106.7 501.3 96 488 96zM433.4 320L176 489.2L176 150.8L433.4 320z"
+              />
+            </svg>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <dialog class="dialog dialog--start-match">
+      <article>(count)</article>
+    </dialog>
+
+    <footer class="container">
+      <h2>Background</h2>
+
+      <details name="background">
+        <summary>FLL</summary>
+        <ul>
+          <li>
+            Created for the
+            <a href="https://brooklinebots.org/" rel="external"
+              >Brookline Bots</a
+            >
+            (FTC Team 17218) and the
+            <a href="https://www.brooklinerobotics.org/" rel="external"
+              >Brookline Robotics Initiative</a
+            >
+          </li>
+          <li>
+            Based on the
+            <a
+              href="https://docs.google.com/spreadsheets/d/1AX7y4hkm1iA1891SfQTKVeNZGr1fJQ04WY8TMSztR6A/edit?usp=sharing"
+              rel="external"
+              >FLL scrimmage schedule 2025</a
+            >
+          </li>
+          <li>
+            Event Hub Official Scoring Calculator
+            <a
+              href="https://eventhub.firstinspires.org/scoresheet"
+              rel="external"
+              >Unearthed</a
+            >
+          </li>
+          <li>
+            <a href="https://www.firstlegoleague.org/" rel="external"
+              >FIRST LEGO League (FLL)</a
+            >
+          </li>
+        </ul>
+      </details>
+
+      <details name="background">
+        <summary>Website</summary>
+        <ul>
+          <li>
+            Default styles from
+            <a href="https://picocss.com/" rel="external">Pico</a>
+          </li>
+          <li>
+            Icons from
+            <a href="https://fontawesome.com/" rel="external">Font Awesome</a>
+          </li>
+          <li>
+            Fluid typography from
+            <a href="https://fluid.style/">Maxwell Barvian's Fluid Style</a>
+          </li>
+        </ul>
+      </details>
+    </footer>
+  </body>
+</html>
