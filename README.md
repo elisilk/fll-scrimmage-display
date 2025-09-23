@@ -50,11 +50,14 @@ Users should be able to:
 
 Known issues (specific areas that the solution should be improved):
 
-- [ ] scrolling
+- [ ] The match schedule table gets crowded at middle viewport sizes. Potentially hide a column or transition to a one-column format sooner.
+- [ ] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
 
-Feature requests (enhancements to consider making):
+Feature requests (enhancements to consider making) 🤔:
 
-Hmm 🤔 ...
+- [ ] Open a full-display alert dialog when the timer has completed.
+- [ ] Style the timer to be a different color as the timer gets close to 0 (possibly the last 10 seconds).
+- [ ] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
 
 ### Related resources
 
