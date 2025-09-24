@@ -50,8 +50,8 @@ Users should be able to:
 
 Known issues (specific areas that the solution should be improved):
 
-- [ ] The match schedule table gets crowded at middle viewport sizes. Potentially hide a column or transition to a one-column format sooner.
-- [ ] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
+- [x] The match schedule table gets crowded at middle viewport sizes. Potentially hide a column or transition to a one-column format sooner.
+- [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
 
 Feature requests (enhancements to consider making) 🤔:
 

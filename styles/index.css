@@ -178,9 +178,9 @@ section {
   display: none;
 }
 
-.section--timer:has([data-status='ready']) .icon--restart,
-.section--timer:has([data-status='playing']) .icon--restart,
-.section--timer:has([data-status='paused']) .icon--restart {
+.section--timer:has([data-status='ready']) .icon--reset,
+.section--timer:has([data-status='playing']) .icon--reset,
+.section--timer:has([data-status='paused']) .icon--reset {
   display: none;
 }
 

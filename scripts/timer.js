@@ -111,7 +111,6 @@ function timerReset() {
 
 // HTML control elements and event listeners
 
-const buttonStartMatch = document.querySelector('.btn--start-match');
 const dialogStartMatch = document.querySelector('.dialog--start-match');
 const dialogStartMatchContent = dialogStartMatch.querySelector('article');
 
@@ -138,13 +137,11 @@ function startMatchCountdown() {
   matchCountdownIntervalId = setInterval(executeMatchCountdownIteration, 1000);
 }
 
-buttonStartMatch.addEventListener('click', startMatchCountdown);
+const buttonPlayPauseReset = document.querySelector('.btn--play-pause-reset');
 
-const buttonPlayPauseRestart = document.querySelector(
-  '.btn--play-pause-restart'
-);
-
-buttonPlayPauseRestart.addEventListener('click', timerToggleStatus);
+buttonPlayPauseReset.addEventListener('click', () => {
+  timer.status === 'ready' ? startMatchCountdown() : timerToggleStatus();
+});
 
 document.querySelectorAll('.btn--timer-preset').forEach((button) =>
   button.addEventListener('click', (event) => {
