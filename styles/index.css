@@ -4,9 +4,11 @@
 
 /* Media query breakpoints (min-widths) */
 
-/* 26rem = 416px -- mobile -> larger mobile */
 /* 46rem = 736px -- mobile -> tablet */
 /* 60rem = 960px -- tablet -> desktop */
+
+/* min 20rem = 320px */
+/* max 77.5rem = 1240px */
 
 /* Fluid min -> max viewport sizes */
 
@@ -16,7 +18,7 @@
 
 /* (t) tablet -> (d) desktop */
 /* 50rem = 800px */
-/* 62rem = 992px */
+/* 60rem = 960px */
 
 /* viewport: mobile -> tablet */
 /* @media (min-width: 46rem) {
@@ -35,6 +37,13 @@
 /* -------------------- */
 
 :root {
+  --fs-900: clamp(6rem, 1.714rem + 17.143vw, 12rem); /* (m) 96px -> (d) 192px */
+  --fs-800: clamp(
+    4rem,
+    -0.286rem + 17.143vw,
+    10rem
+  ); /* (m) 64px -> (d) 160px */
+
   --main-gutter: 2rem;
 
   --color-red: var(--pico-color-red-400);
@@ -113,7 +122,7 @@ section {
 }
 
 .timer {
-  font-size: clamp(6rem, 3.913rem + 10.435vw, 12rem);
+  font-size: var(--fs-900);
   line-height: 1;
   margin-block-end: 2rem;
 }
@@ -193,7 +202,7 @@ section {
 
 .dialog article {
   background: transparent;
-  font-size: 10rem;
+  font-size: var(--fs-800);
   font-weight: bold;
   text-align: center;
   animation: countdown-animation 1s infinite;
