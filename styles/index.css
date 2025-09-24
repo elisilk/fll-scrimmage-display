@@ -125,6 +125,7 @@ section {
   font-size: var(--fs-900);
   line-height: 1;
   margin-block-end: 2rem;
+  padding-inline: 1rem;
 }
 
 .timer--ended {
