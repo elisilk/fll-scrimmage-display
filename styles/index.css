@@ -45,6 +45,14 @@
 }
 
 /* ---------------------- */
+/* Reset / Overrides      */
+/* ---------------------- */
+
+section {
+  margin-block-end: 0;
+}
+
+/* ---------------------- */
 /* Utilities              */
 /* ---------------------- */
 
@@ -62,6 +70,8 @@
 
 .main-layout {
   max-inline-size: calc(100% - 2 * var(--main-gutter));
+  padding: 0;
+  margin-block: var(--main-gutter);
   display: grid;
   grid-template-areas:
     'timer'
@@ -204,13 +214,6 @@
   container-name: current-match-container;
 }
 
-@container current-match-container (max-width: 500px) {
-  .hide-on-narrow,
-  .current-match .hide-on-narrow {
-    display: none;
-  }
-}
-
 .current-match__num {
   grid-area: match;
   justify-self: center;
@@ -246,7 +249,7 @@
 /* -------------------- */
 
 .schedule__container {
-  max-block-size: 600px;
+  max-block-size: 60vb;
   overflow-y: auto;
   scroll-padding-block-start: 90px;
   position: relative; /* Important for sticky positioning */
@@ -257,13 +260,6 @@
 
   container-type: inline-size;
   container-name: table-container;
-}
-
-@container table-container (max-width: 500px) {
-  .hide-on-narrow,
-  .schedule__body .hide-on-narrow {
-    display: none;
-  }
 }
 
 .schedule__container::-webkit-scrollbar {
@@ -322,6 +318,18 @@ table.striped tbody tr.next td {
 .schedule__controls > input {
   text-align: center;
   inline-size: 5rem;
+}
+
+/* -------------------- */
+/* Hide on Narow        */
+/* -------------------- */
+
+@container (max-width: 500px) {
+  .hide-on-narrow,
+  .current-match .hide-on-narrow,
+  .schedule__body .hide-on-narrow {
+    display: none;
+  }
 }
 
 /* -------------------- */

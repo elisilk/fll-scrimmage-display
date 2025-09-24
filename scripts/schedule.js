@@ -11,9 +11,10 @@ const eventStartTime = new Date('Nov 17 2025 17:05:00 GMT-0500');
 const eventBreakTime = new Date('Nov 17 2025 18:35:00 GMT-0500');
 
 const timeFormatter = new Intl.DateTimeFormat('en-US', {
-  hour: 'numeric',
-  minute: '2-digit',
-  hour12: true,
+  timeStyle: 'short',
+  // hour: 'numeric',
+  // minute: '2-digit',
+  // hour12: true,
 });
 
 // https://www.firstinspires.org/team-event-search#type=teams&sort=name&programs=FLL&year=2023&country=USA&stateprov=MA&zipCode=02445&distance=10
