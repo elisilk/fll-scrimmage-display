@@ -37,9 +37,24 @@
 :root {
   --main-gutter: 2rem;
 
+  --color-red: var(--pico-color-red-400);
+  --color-blue: var(--pico-color-blue-400);
+
   /* pico overrides */
   --pico-grid-column-gap: 3rem;
 }
+
+/* ---------------------- */
+/* Utilities              */
+/* ---------------------- */
+
+/* .color-red {
+  color: var(--color-red);
+}
+
+.color-blue {
+  color: var(--color-blue);
+} */
 
 /* ---------------------- */
 /* Main Layout / Sections */
@@ -62,6 +77,7 @@
     grid-template-areas:
       'timer schedule'
       'current schedule';
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -118,6 +134,7 @@
 
 .timer__controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -178,11 +195,20 @@
 
 .current-match {
   display: grid;
-  grid-template-areas:
-    'match match match'
-    'sideA vs sideB';
+  grid-template-areas: 'sideA vs sideB';
+  grid-template-columns: 1fr min-content 1fr;
+  grid-column-gap: 1rem;
   grid-row-gap: 1rem;
-  margin-block-end: 2rem;
+
+  container-type: inline-size;
+  container-name: current-match-container;
+}
+
+@container current-match-container (max-width: 500px) {
+  .hide-on-narrow,
+  .current-match .hide-on-narrow {
+    display: none;
+  }
 }
 
 .current-match__num {
@@ -228,10 +254,25 @@
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+  container-type: inline-size;
+  container-name: table-container;
+}
+
+@container table-container (max-width: 500px) {
+  .hide-on-narrow,
+  .schedule__body .hide-on-narrow {
+    display: none;
+  }
 }
 
 .schedule__container::-webkit-scrollbar {
   display: none;
+}
+
+.schedule {
+  table-layout: fixex;
+  inline-size: 100%;
 }
 
 .schedule__header {
@@ -247,16 +288,21 @@
 .schedule th,
 .schedule td {
   text-align: center;
+  text-overflow: ellipsis;
 }
 
-.current th,
-.current td {
+table tbody tr.current th,
+table tbody tr.current td,
+table.striped tbody tr.current th,
+table.striped tbody tr.current td {
   color: var(--pico-primary-inverse);
   background-color: var(--pico-primary-background);
 }
 
-.next th,
-.next td {
+table tbody tr.next th,
+table tbody tr.next td,
+table.striped tbody tr.next th,
+table.striped tbody tr.next td {
   color: var(--pico-secondary-inverse);
   background-color: var(--pico-secondary-background);
 }

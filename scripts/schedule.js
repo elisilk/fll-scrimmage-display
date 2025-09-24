@@ -166,20 +166,20 @@ function populateCurrentMatch() {
 
   currentMatchElement.innerHTML = `
     <article class="current-match__side current-match__sideA">
-      <header>Red Side</header>
+      <header class="color-red">Red Side</header>
       <main>
         <span>Team ${currentMatchInfo.sideA}</span>
         <span>${sideATeamInfo.number}</span>
-        <span>${sideATeamInfo.name}</span>
+        <span class="hide-on-narrow">${sideATeamInfo.name}</span>
       </main>
     </article>
-    <div class="current-match__vs">vs.</div>
+    <div class="current-match__vs">vs</div>
     <article class="current-match__side current-match__sideB">
-      <header>Blue Side</header>
+      <header class="color-blue">Blue Side</header>
       <main>
         <span>Team ${currentMatchInfo.sideB}</span>
         <span>${sideBTeamInfo.number}</span>
-        <span>${sideBTeamInfo.name}</span>
+        <span class="hide-on-narrow">${sideBTeamInfo.name}</span>
       </main>
     </article>
     `;
@@ -196,17 +196,19 @@ function populateMatchSchedule() {
 
       return `
   <tr data-match-number="${match.number}">
-    <th scope="row">${match.number}</th>
-    <th scope="row">${timeFormatter.format(match.time)}</th>
+    <th scope="row">
+      <span>${match.number}</span>
+      <span class="hide-on-narrow">${timeFormatter.format(match.time)}</span>
+    </th>
     <td>
       <span>Team ${match.sideA}</span>
       <span>${sideATeamInfo.number}</span>
-      <span>${sideATeamInfo.name}</span>
+      <span class="hide-on-narrow">${sideATeamInfo.name}</span>
     </td>
     <td>
       <span>Team ${match.sideB}</span>
       <span>${sideBTeamInfo.number}</span>
-      <span>${sideBTeamInfo.name}</span>
+      <span class="hide-on-narrow">${sideBTeamInfo.name}</span>
     </td>
   </tr>
   `;

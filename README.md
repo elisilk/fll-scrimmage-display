@@ -61,8 +61,20 @@ Feature requests (enhancements to consider making) 🤔:
 
 ### Related resources
 
-- [FIRST Event Hub Official Scoring Calculator for Unearthed](https://eventhub.firstinspires.org/scoresheet)
+Up-to-date official resources:
+
 - [FIRST LEGO League (FLL)](https://www.firstlegoleague.org/)
+- [FIRST Event Hub Official Scoring Calculator for Unearthed](https://eventhub.firstinspires.org/scoresheet)
+  - [The Event Experience](https://www.firstinspires.org/robotics/fll/event-experience) - Event Hub - If your FIRST LEGO League event is utilizing the FIRST Event Hub, please access the website at: [eventhub.firstinspires.org](https://eventhub.firstinspires.org/login). The Event Hub is intended for FIRST coaches, mentors, and volunteers. Contact your local Program Delivery Partner if you require login credentials or experience technical difficulties.
+- [MA FIRST local Program Delivery Partners](https://www.firstinspires.org/find-local-support#country=42&stateprov=4466)
+
+Other unofficial resources:
+
+- [FIRST LEGO League Developers GitHub](https://github.com/FirstLegoLeague) and associated [@Flltools YouTube channel](https://www.youtube.com/c/Flltools)
+- [FLL-SW (FLL Software)](https://jpschewe.github.io/fll-sw/) and [GitHub Repository](https://github.com/jpschewe/fll-sw)
+- [Droids Robotics FLL Tools](https://flltools.flltutorials.com/home) and [GitHub](https://github.com/droidsrobotics)
+  - [FLLTutorials Tournament Scoring System](https://tournament.flltutorials.com/)
+- [Komurobo FLL Tools](https://komurobo.com/fll/dashboard/)
 
 ## Acknowledgements
 
