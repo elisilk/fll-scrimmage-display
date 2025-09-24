@@ -235,10 +235,6 @@ section {
   text-align: center;
 }
 
-.current-match__side span {
-  display: block;
-}
-
 .current-match__sideA {
   grid-area: sideA;
 }
@@ -286,10 +282,6 @@ section {
   z-index: 1;
 }
 
-.schedule__body span {
-  display: block;
-}
-
 .schedule th,
 .schedule td {
   text-align: center;
@@ -334,9 +326,7 @@ table.striped tbody tr.next td {
 /* -------------------- */
 
 @container (max-width: 500px) {
-  .hide-on-narrow,
-  .current-match .hide-on-narrow,
-  .schedule__body .hide-on-narrow {
+  .hide-on-narrow {
     display: none;
   }
 }

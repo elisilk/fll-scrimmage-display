@@ -167,20 +167,26 @@ function populateCurrentMatch() {
 
   currentMatchElement.innerHTML = `
     <article class="current-match__side current-match__sideA">
-      <header class="color-red">Red Side</header>
+      <header class="color-red">
+        <span>Red</span>
+        <span class="hide-on-narrow">Side</span>
+      </header>
       <main>
-        <span>Team ${currentMatchInfo.sideA}</span>
-        <span>${sideATeamInfo.number}</span>
-        <span class="hide-on-narrow">${sideATeamInfo.name}</span>
+        <div>Team ${currentMatchInfo.sideA}</div>
+        <div>${sideATeamInfo.number}</div>
+        <div class="hide-on-narrow">${sideATeamInfo.name}</div>
       </main>
     </article>
     <div class="current-match__vs">vs</div>
     <article class="current-match__side current-match__sideB">
-      <header class="color-blue">Blue Side</header>
+      <header class="color-blue">
+        <span>Blue</span>
+        <span class="hide-on-narrow">Side</span>
+      </header>
       <main>
-        <span>Team ${currentMatchInfo.sideB}</span>
-        <span>${sideBTeamInfo.number}</span>
-        <span class="hide-on-narrow">${sideBTeamInfo.name}</span>
+        <div>Team ${currentMatchInfo.sideB}</div>
+        <div>${sideBTeamInfo.number}</div>
+        <div class="hide-on-narrow">${sideBTeamInfo.name}</div>
       </main>
     </article>
     `;
@@ -198,18 +204,18 @@ function populateMatchSchedule() {
       return `
   <tr data-match-number="${match.number}">
     <th scope="row">
-      <span>${match.number}</span>
-      <span class="hide-on-narrow">${timeFormatter.format(match.time)}</span>
+      <div>${match.number}</div>
+      <div class="hide-on-narrow">${timeFormatter.format(match.time)}</div>
     </th>
     <td>
-      <span>Team ${match.sideA}</span>
-      <span>${sideATeamInfo.number}</span>
-      <span class="hide-on-narrow">${sideATeamInfo.name}</span>
+      <div>Team ${match.sideA}</div>
+      <div>${sideATeamInfo.number}</div>
+      <div class="hide-on-narrow">${sideATeamInfo.name}</div>
     </td>
     <td>
-      <span>Team ${match.sideB}</span>
-      <span>${sideBTeamInfo.number}</span>
-      <span class="hide-on-narrow">${sideBTeamInfo.name}</span>
+      <div>Team ${match.sideB}</div>
+      <div>${sideBTeamInfo.number}</div>
+      <div class="hide-on-narrow">${sideBTeamInfo.name}</div>
     </td>
   </tr>
   `;
