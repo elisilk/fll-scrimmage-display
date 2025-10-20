@@ -185,6 +185,14 @@ section {
   display: none;
 }
 
+.section--timer:has([data-sound='true']) .icon--sound-off {
+  display: none;
+}
+
+.section--timer:has([data-sound='false']) .icon--sound-on {
+  display: none;
+}
+
 /* -------------------- */
 /* Dialog               */
 /* -------------------- */

@@ -2,8 +2,11 @@
 
 // Configuration
 
-const defaultTimerStartValue = 5; // shorter countdown, for testing purposes
-//const defaultTimerStartValue = 150; // 2:30 = 150 seconds
+// const defaultTimerStartValue = 5; // shorter countdown, for testing purposes
+const defaultTimerStartValue = 150; // 2:30 = 150 seconds
+
+const audioTimerStart = new Audio('/sounds/robotic-countdown-43935.mp3');
+const audioTimerEnd = new Audio('/sounds/brass-fail-8-a-207130.mp3');
 
 // State
 
@@ -11,6 +14,7 @@ const timer = {
   element: document.querySelector('.timer'),
   intervalId: null,
   status: 'ready', // 'ready' | 'playing' | 'paused' | 'done'
+  playSounds: true,
   secondsTotal: defaultTimerStartValue,
   secondsRemaining: defaultTimerStartValue,
 };
@@ -56,6 +60,7 @@ function executeTimerIteration() {
   timer.secondsRemaining = Math.round(msecsRemaining / 1000);
   updateTimerDisplay();
   if (msecsRemaining < 0) {
+    if (timer.playSounds) audioTimerEnd.play();
     console.log('Timer finished!');
     clearInterval(timer.intervalId);
     timer.status = 'done';
@@ -105,7 +110,14 @@ function timerToggleStatus() {
   }
 }
 
+function timerToggleSound() {
+  timer.playSounds = !timer.playSounds;
+  timer.element.dataset.sound = timer.playSounds;
+  console.log('Sound effects:', timer.playSounds ? 'On' : 'Off');
+}
+
 function timerReset() {
+  timer.element.dataset.sound = timer.playSounds;
   setupTimer(timer.secondsTotal);
 }
 
@@ -133,9 +145,17 @@ function startMatchCountdown() {
   dialogStartMatch.showModal();
 
   matchCountdownCount = 3;
+
   executeMatchCountdownIteration();
+
   matchCountdownIntervalId = setInterval(executeMatchCountdownIteration, 1000);
+
+  if (timer.playSounds) audioTimerStart.play();
 }
+
+// ----------------------------------------
+// HTML elements and event listeners
+// ----------------------------------------
 
 const buttonPlayPauseReset = document.querySelector('.btn--play-pause-reset');
 
@@ -143,12 +163,18 @@ buttonPlayPauseReset.addEventListener('click', () => {
   timer.status === 'ready' ? startMatchCountdown() : timerToggleStatus();
 });
 
+const buttonSoundOnOff = document.querySelector('.btn--sound-on-off');
+
+buttonSoundOnOff.addEventListener('click', timerToggleSound);
+
 document.querySelectorAll('.btn--timer-preset').forEach((button) =>
   button.addEventListener('click', (event) => {
     setupTimer(event.target.dataset.time);
   })
 );
 
+// ----------------------------------------
 // Initialize
+// ----------------------------------------
 
 timerReset();

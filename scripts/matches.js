@@ -1,11 +1,15 @@
 // MATCHES
 
+// ----------------------------------------
 // State
+// ----------------------------------------
 
 let eventMatches;
 let currentMatchNumber = 1;
 
+// ----------------------------------------
 // Getters
+// ----------------------------------------
 
 const currentMatch = () =>
   eventMatches.find((match) => match.matchNumber === currentMatchNumber);
@@ -112,7 +116,7 @@ function normalizeData(data) {
 // ----------------------------------------
 
 // ----------------------------------------
-// HTML display elements (start)
+// HTML elements and event listeners (start)
 // ----------------------------------------
 
 // current match
@@ -144,11 +148,11 @@ inputCurrentMatch.addEventListener('change', () =>
 );
 
 // ----------------------------------------
-// HTML display elements (end)
+// HTML elements and event listeners (end)
 // ----------------------------------------
 
 // ----------------------------------------
-// Actions (start)
+// HTML generators
 // ----------------------------------------
 
 function generateBreakTableRowHTML(activity) {
@@ -220,6 +224,10 @@ function generateCurrentMatchHTML(match) {
     </article>
     `;
 }
+
+// ----------------------------------------
+// Actions (start)
+// ----------------------------------------
 
 function populateMatchSchedule() {
   // set max and min values on the match number input control

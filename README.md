@@ -44,20 +44,22 @@ Users should be able to:
 - Accessibility
 - [Pico](https://picocss.com/) - default styling
 - [Font Awesome](https://fontawesome.com/) - icons
+- [Pixabay](https://pixabay.com/sound-effects/) - sound effects
 - [Fluid Style](https://fluid.style/) - fluid typography calculator
 
 ### Continued development
 
 Known issues (specific areas that the solution should be improved):
 
-- [x] The match schedule table gets crowded at middle viewport sizes. Potentially hide a column or transition to a one-column format sooner.
+- [x] The match schedule table gets crowded at middle viewport sizes. Hide a column and/or transition to a one-column format sooner.
 - [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
+- [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
 
 Feature requests (enhancements to consider making) 🤔:
 
+- [ ] Have option to read in a default CSV match schedule file.
 - [ ] Open a full-display alert dialog when the timer has completed.
 - [ ] Style the timer to be a different color as the timer gets close to 0 (possibly the last 10 seconds).
-- [ ] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
 
 ### Related resources
 
