@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="styles/index.css" />
 
     <script defer src="scripts/timer.js"></script>
-    <script defer src="scripts/schedule.js"></script>
+    <script defer src="scripts/matches.js"></script>
 
     <title>FLL Scrimmage Display - Brookline Robotics Initiative</title>
   </head>
@@ -211,21 +211,31 @@
     </dialog>
 
     <footer class="container">
-      <h2 class="sr-only">Background</h2>
-      <p>
-        <small>
-          Created for the
-          <a href="https://www.firstlegoleague.org/" rel="external"
-            >FIRST LEGO League (FLL)</a
-          >
-          scrimmage hosted by the
-          <a href="https://brooklinebots.org/" rel="external">Brookline Bots</a>
-          (FTC Team 17218) and the
-          <a href="https://www.brooklinerobotics.org/" rel="external"
-            >Brookline Robotics Initiative</a
-          >.
-        </small>
-      </p>
+      <div>
+        <h2 class="sr-only">Background</h2>
+        <p>
+          <small>
+            Created for the
+            <a href="https://www.firstlegoleague.org/" rel="external"
+              >FIRST LEGO League (FLL)</a
+            >
+            scrimmage hosted by the
+            <a href="https://brooklinebots.org/" rel="external"
+              >Brookline Bots</a
+            >
+            (FTC Team 17218) and the
+            <a href="https://www.brooklinerobotics.org/" rel="external"
+              >Brookline Robotics Initiative</a
+            >.
+          </small>
+        </p>
+      </div>
+
+      <div>
+        <h2>Read in a match data file:</h2>
+        <input id="file-input" type="file" accept=".csv" />
+        <div id="file-input-message"></div>
+      </div>
     </footer>
   </body>
 </html>
