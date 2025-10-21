@@ -6,7 +6,9 @@
 const defaultTimerStartValue = 150; // 2:30 = 150 seconds
 
 const audioTimerStart = new Audio('sounds/robotic-countdown-43935.mp3');
-const audioTimerEnd = new Audio('sounds/brass-fail-8-a-207130.mp3');
+const audioTimerEnd = new Audio(
+  'sounds/game-over-deep-male-voice-clip-352695.mp3'
+);
 
 // State
 
