@@ -119,7 +119,7 @@ section {
 
 .timer--ended {
   animation: end-animation 1s forwards;
-  color: red;
+  color: var(--color-red);
 }
 
 @keyframes end-animation {
