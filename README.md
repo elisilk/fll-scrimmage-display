@@ -51,17 +51,14 @@ Users should be able to:
 
 Known issues (specific areas that the solution should be improved):
 
-- [x] The match schedule table gets crowded at middle viewport sizes. Hide a column and/or transition to a one-column format sooner.
 - [ ] In the match schedule table, there is a transparent border spacing around the cells that allows user to see the cells underneath the header as the table is scrolled up vertically.
 - [ ] The game over sound effect doesn't play on iPhone Safari or Chrome (but does on Firefox). Investigate on a different device to see if this is a caching issue, or some other problem.
-- [ ] On mobile devices, when moving to next match, prevent scrolling to the top of the match schedule table and/or initiate the page scrolling to a different desirable element (e.g., the timer).
+- [x] Clean up styling of the countdown dialog so doesn't overflow and so it doesn't have a border or shadow.
+- [x] On mobile devices, when moving to next match, prevent scrolling to the top of the match schedule table and/or initiate the page scrolling to a different desirable element (e.g., the timer).
+- [x] The match schedule table gets crowded at middle viewport sizes. Hide a column and/or transition to a one-column format sooner.
 
 Feature requests (enhancements to consider making) 🤔:
 
-- [x] Change Pico color scheme (see [Pico > Version Picker > Theme color](https://picocss.com/docs/version-picker/))
-- [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
-- [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
-- [x] Have option to read in a default CSV match schedule file.
 - [ ] Improve styling of the current match section, especially better highlighting of the current match number.
 - [ ] Add an on-deck or next-up-in-the-queue to the current match section.
 - [ ] Open a full-display alert dialog when the timer has completed.
@@ -69,6 +66,10 @@ Feature requests (enhancements to consider making) 🤔:
 - [ ] Include an audio countdown (or some other audio indicator) as the timer gets close to 0 (possibly the last 10 seconds).
 - [ ] Add a progress bar for the timer countdown progress.
 - [ ] Have a dropdown for different sound effect choices.
+- [x] Change Pico color scheme (see [Pico > Version Picker > Theme color](https://picocss.com/docs/version-picker/))
+- [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
+- [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
+- [x] Have option to read in a default CSV match schedule file.
 
 ### Related resources
 
