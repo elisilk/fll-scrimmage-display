@@ -219,7 +219,7 @@ section {
 .current-match {
   display: grid;
   grid-template-areas: 'sideA vs sideB';
-  grid-template-columns: 1fr min-content 1fr;
+  grid-template-columns: minmax(0, 1fr) min-content minmax(0, 1fr);
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
 
@@ -285,7 +285,7 @@ section {
 }
 
 .schedule {
-  table-layout: fixex;
+  table-layout: fixed;
   inline-size: 100%;
 }
 
@@ -298,8 +298,10 @@ section {
 
 .schedule th,
 .schedule td {
+  vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
+  padding-inline: calc(var(--pico-spacing) / 4);
 }
 
 table tbody tr.current th,
@@ -336,7 +338,7 @@ table.striped tbody tr.next td {
 }
 
 /* -------------------- */
-/* Hide on Narow        */
+/* Hide on Narrow       */
 /* -------------------- */
 
 @container (max-width: 500px) {

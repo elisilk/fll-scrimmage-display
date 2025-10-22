@@ -198,8 +198,8 @@ function generateTeamHTML(team) {
     `
     : `
     <div>Team ${team.teamId}</div>
-    <div>${team.teamNumber}</div>
-    <div class="hide-on-narrow">${team.teamName}</div>
+    <div class="hide-on-narrow">${team.teamNumber}</div>
+    <div>${team.teamName}</div>
     `;
 }
 
