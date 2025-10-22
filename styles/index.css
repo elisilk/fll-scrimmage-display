@@ -85,6 +85,7 @@ section {
       'timer schedule'
       'current schedule';
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
   }
 }
 
@@ -255,12 +256,15 @@ section {
 /* Match Schedule       */
 /* -------------------- */
 
+.section--schedule > * + * {
+  margin-block-start: 2rem;
+}
+
 .schedule__container {
   max-block-size: 60vb;
   overflow-y: auto;
   scroll-padding-block-start: 90px;
   position: relative; /* Important for sticky positioning */
-  margin-block-end: 2rem;
 
   scrollbar-width: none;
   -ms-overflow-style: none;

@@ -52,15 +52,21 @@ Users should be able to:
 Known issues (specific areas that the solution should be improved):
 
 - [x] The match schedule table gets crowded at middle viewport sizes. Hide a column and/or transition to a one-column format sooner.
-- [ ] The game over sound effect doesn't play on iPhone Safari or Chrome (but does on Firefox). Investigage on a different device to see if this is a caching issue, or some other problem.
+- [ ] In the match schedule table, there is a transparent border spacing around the cells that allows user to see the cells underneath the header as the table is scrolled up vertically.
+- [ ] The game over sound effect doesn't play on iPhone Safari or Chrome (but does on Firefox). Investigate on a different device to see if this is a caching issue, or some other problem.
 
 Feature requests (enhancements to consider making) 🤔:
 
+- [x] Change Pico color scheme (see [Pico > Version Picker > Theme color](https://picocss.com/docs/version-picker/))
 - [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
 - [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
-- [ ] Have option to read in a default CSV match schedule file.
+- [x] Have option to read in a default CSV match schedule file.
+- [ ] Improve styling of the current match section, especially better highlighting of the current match number.
+- [ ] Add an on-deck or next-up-in-the-queue to the current match section.
 - [ ] Open a full-display alert dialog when the timer has completed.
-- [ ] Style the timer to be a different color as the timer gets close to 0 (possibly the last 10 seconds).
+- [ ] Style the timer to be a different color (or some other visual indicator) as the timer gets close to 0 (possibly the last 10 seconds).
+- [ ] Include an audio countdown (or some other audio indicator) as the timer gets close to 0 (possibly the last 10 seconds).
+- [ ] Add a progress bar for the timer countdown progress.
 - [ ] Have a dropdown for different sound effect choices.
 
 ### Related resources
