@@ -46,8 +46,8 @@
 
   --main-gutter: 2rem;
 
-  --color-red: var(--pico-color-red-400);
-  --color-blue: var(--pico-color-blue-400);
+  --color-red: var(--pico-color-red-500);
+  --color-blue: var(--pico-color-blue-500);
 
   /* pico overrides */
   --pico-grid-column-gap: 3rem;
@@ -60,18 +60,6 @@
 section {
   margin-block-end: 0;
 }
-
-/* ---------------------- */
-/* Utilities              */
-/* ---------------------- */
-
-/* .color-red {
-  color: var(--color-red);
-}
-
-.color-blue {
-  color: var(--color-blue);
-} */
 
 /* ---------------------- */
 /* Main Layout / Sections */
@@ -244,6 +232,11 @@ section {
   text-align: center;
 }
 
+.current-match__side header {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .current-match__sideA {
   grid-area: sideA;
 }
@@ -289,6 +282,7 @@ section {
   position: sticky;
   top: 0;
   z-index: 1;
+  text-transform: uppercase;
 }
 
 .schedule th,
@@ -341,8 +335,30 @@ table.striped tbody tr.next td {
 }
 
 /* -------------------- */
+/* Admin Controls       */
+/* -------------------- */
+
+.admin-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-inline-size: 768px;
+}
+
+/* -------------------- */
 /* Utility classes      */
 /* -------------------- */
+
+/* screen reader only */
+
+.color-red {
+  color: var(--color-red);
+}
+
+.color-blue {
+  color: var(--color-blue);
+}
 
 /* screen reader only */
 

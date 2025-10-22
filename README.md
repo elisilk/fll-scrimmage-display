@@ -52,14 +52,16 @@ Users should be able to:
 Known issues (specific areas that the solution should be improved):
 
 - [x] The match schedule table gets crowded at middle viewport sizes. Hide a column and/or transition to a one-column format sooner.
-- [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
-- [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
+- [ ] The game over sound effect doesn't play on iPhone Safari or Chrome (but does on Firefox). Investigage on a different device to see if this is a caching issue, or some other problem.
 
 Feature requests (enhancements to consider making) 🤔:
 
+- [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
+- [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).
 - [ ] Have option to read in a default CSV match schedule file.
 - [ ] Open a full-display alert dialog when the timer has completed.
 - [ ] Style the timer to be a different color as the timer gets close to 0 (possibly the last 10 seconds).
+- [ ] Have a dropdown for different sound effect choices.
 
 ### Related resources
 

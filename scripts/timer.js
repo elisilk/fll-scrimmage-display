@@ -1,6 +1,8 @@
 // TIMER
 
+// ----------------------------------------
 // Configuration
+// ----------------------------------------
 
 // const defaultTimerStartValue = 5; // shorter countdown, for testing purposes
 const defaultTimerStartValue = 150; // 2:30 = 150 seconds
@@ -10,7 +12,9 @@ const audioTimerEnd = new Audio(
   'sounds/game-over-deep-male-voice-clip-352695.mp3'
 );
 
+// ----------------------------------------
 // State
+// ----------------------------------------
 
 const timer = {
   element: document.querySelector('.timer'),
@@ -21,7 +25,9 @@ const timer = {
   secondsRemaining: defaultTimerStartValue,
 };
 
+// ----------------------------------------
 // Actions
+// ----------------------------------------
 
 function updateTimerDisplay() {
   let adjustedSeconds = timer.secondsRemaining < 0 ? 0 : timer.secondsRemaining;
@@ -123,7 +129,9 @@ function timerReset() {
   setupTimer(timer.secondsTotal);
 }
 
-// HTML control elements and event listeners
+// ----------------------------------------
+// Start match countdown
+// ----------------------------------------
 
 const dialogStartMatch = document.querySelector('.dialog--start-match');
 const dialogStartMatchContent = dialogStartMatch.querySelector('article');
@@ -156,7 +164,7 @@ function startMatchCountdown() {
 }
 
 // ----------------------------------------
-// HTML elements and event listeners
+// Control HTML elements and event listeners
 // ----------------------------------------
 
 const buttonPlayPauseReset = document.querySelector('.btn--play-pause-reset');

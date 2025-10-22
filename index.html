@@ -35,7 +35,8 @@
 
     <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="styles/pico/pico.colors.min.css" />
-    <link rel="stylesheet" href="styles/pico/pico.min.css" />
+    <!-- <link rel="stylesheet" href="styles/pico/pico.min.css" /> -->
+    <link rel="stylesheet" href="styles/pico/pico.zinc.min.css" />
     <link rel="stylesheet" href="styles/index.css" />
 
     <script defer src="scripts/timer.js"></script>
@@ -227,52 +228,50 @@
 
     <aside class="container">
       <h2>Admin Area</h2>
-      <div>
-        <p>Timer presets:</p>
-        <button
-          class="btn btn--timer-preset"
-          type="button"
-          data-time="150"
-          aria-label="Set timer to 2 minutes and 30 seconds"
-        >
-          2:30
-        </button>
-        <button
-          class="btn--timer-preset"
-          type="button"
-          data-time="5"
-          aria-label="Set timer to 5 seconds"
-        >
-          0:05
-        </button>
-      </div>
-      <div>
-        <p>Read in a match data file:</p>
-        <input id="file-input" type="file" accept=".csv" />
-        <div id="file-input-message"></div>
+      <div class="admin-controls">
+        <div>
+          <p>Timer presets:</p>
+          <button
+            class="btn btn--timer-preset"
+            type="button"
+            data-time="150"
+            aria-label="Set timer to 2 minutes and 30 seconds"
+          >
+            2:30
+          </button>
+          <button
+            class="btn--timer-preset"
+            type="button"
+            data-time="5"
+            aria-label="Set timer to 5 seconds"
+          >
+            0:05
+          </button>
+        </div>
+        <div>
+          <label for="file-input">Read in a match data file:</label>
+          <input id="file-input" type="file" accept=".csv" />
+          <div id="file-input-message"></div>
+        </div>
       </div>
     </aside>
 
     <footer class="container">
-      <div>
-        <h2 class="sr-only">Background</h2>
-        <p>
-          <small>
-            Created for the
-            <a href="https://www.firstlegoleague.org/" rel="external"
-              >FIRST LEGO League (FLL)</a
-            >
-            scrimmage hosted by the
-            <a href="https://brooklinebots.org/" rel="external"
-              >Brookline Bots</a
-            >
-            (FTC Team 17218) and the
-            <a href="https://www.brooklinerobotics.org/" rel="external"
-              >Brookline Robotics Initiative</a
-            >.
-          </small>
-        </p>
-      </div>
+      <h2>Credits</h2>
+      <p>
+        <small>
+          Created for the
+          <a href="https://www.firstlegoleague.org/" rel="external"
+            >FIRST LEGO League (FLL)</a
+          >
+          scrimmage hosted by the
+          <a href="https://brooklinebots.org/" rel="external">Brookline Bots</a>
+          (FTC Team 17218) and the
+          <a href="https://www.brooklinerobotics.org/" rel="external"
+            >Brookline Robotics Initiative</a
+          >.
+        </small>
+      </p>
     </footer>
   </body>
 </html>

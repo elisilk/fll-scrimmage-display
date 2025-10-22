@@ -1,6 +1,12 @@
 // MATCHES
 
 // ----------------------------------------
+// Configuration
+// ----------------------------------------
+
+const defaultMatchesDataFile = 'data/matches.csv';
+
+// ----------------------------------------
 // State
 // ----------------------------------------
 
@@ -26,8 +32,25 @@ const maxMatchNumber = () =>
   );
 
 // ----------------------------------------
-// File Input (start)
+// File input
 // ----------------------------------------
+
+// default data file (relative path URL)
+
+function readDefaultDataFile() {
+  fetch(defaultMatchesDataFile)
+    .then((response) => response.text())
+    .then((csvContent) => {
+      // Process the CSV content here
+      console.log(csvContent);
+      eventMatches = normalizeData(processCsvData(csvContent));
+      console.log(eventMatches);
+      initializeSchedule();
+    })
+    .catch((error) => console.error('Error loading CSV:', error));
+}
+
+// user chosen data file (uploaded from local file on the user's machine)
 
 const fileInput = document.getElementById('file-input');
 const fileInputMessageDisplay = document.getElementById('file-input-message');
@@ -66,6 +89,10 @@ function showMessage(message, type) {
   fileInputMessageDisplay.textContent = message;
   fileInputMessageDisplay.style.color = type === 'error' ? 'red' : 'green';
 }
+
+// ----------------------------------------
+// CSV data processing
+// ----------------------------------------
 
 function processCsvData(csvString) {
   const lines = csvString.split('\n');
@@ -112,11 +139,7 @@ function normalizeData(data) {
 }
 
 // ----------------------------------------
-// File Input (end)
-// ----------------------------------------
-
-// ----------------------------------------
-// HTML elements and event listeners (start)
+// HTML elements and event listeners
 // ----------------------------------------
 
 // current match
@@ -146,10 +169,6 @@ buttonNextMatch.addEventListener('click', () => advanceMatchSchedule(1));
 inputCurrentMatch.addEventListener('change', () =>
   goToMatch(parseInt(inputCurrentMatch.value))
 );
-
-// ----------------------------------------
-// HTML elements and event listeners (end)
-// ----------------------------------------
 
 // ----------------------------------------
 // HTML generators
@@ -226,7 +245,7 @@ function generateCurrentMatchHTML(match) {
 }
 
 // ----------------------------------------
-// Actions (start)
+// Actions
 // ----------------------------------------
 
 function populateMatchSchedule() {
@@ -311,13 +330,11 @@ function advanceMatchSchedule(advanceAmount) {
 }
 
 // ----------------------------------------
-// Actions (end)
-// ----------------------------------------
-
-// ----------------------------------------
 // Initialize
 // ----------------------------------------
 
 // populateCurrentMatch();
 // populateMatchSchedule();
 // goToMatch(1);
+
+readDefaultDataFile();
