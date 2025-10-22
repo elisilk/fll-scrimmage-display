@@ -263,7 +263,7 @@ section {
 .schedule__container {
   max-block-size: 60vb;
   overflow-y: auto;
-  overscroll-behavior: none;
+  // overscroll-behavior: none;
   scroll-padding-block-start: 90px;
   position: relative; /* Important for sticky positioning */
 

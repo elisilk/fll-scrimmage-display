@@ -49,7 +49,7 @@ function updateTimerDisplay() {
 }
 
 function setupTimer(seconds) {
-  console.log(`Timer Setup: ${seconds} secs`);
+  // console.log(`Timer Setup: ${seconds} secs`);
   timer.element.classList.remove('timer--ended'); // remove the animation class
   if (timer.intervalId) clearInterval(timer.intervalId);
   if (seconds < 0) return;
@@ -67,9 +67,29 @@ function executeTimerIteration() {
   const msecsRemaining = endInMsecs - Date.now();
   timer.secondsRemaining = Math.round(msecsRemaining / 1000);
   updateTimerDisplay();
+
   if (msecsRemaining < 0) {
-    if (timer.playSounds) audioTimerEnd.play();
-    console.log('Timer finished!');
+    // console.log('Timer finished!');
+    // Play the timer ending sound
+    if (timer.playSounds) {
+      audioTimerEnd
+        .play()
+        .then(() => {
+          // console.log('Audio playback started successfully.');
+        })
+        .catch((error) => {
+          console.error('Audio playback failed:', error);
+          // Handle specific error types, e.g., NotAllowedError for autoplay issues
+          if (error.name === 'NotAllowedError') {
+            console.log(
+              'Autoplay was blocked. User interaction required to play audio.'
+            );
+            // Display a play button or prompt the user to interact
+          } else {
+            console.log('An unexpected error occurred during playback.');
+          }
+        });
+    }
     clearInterval(timer.intervalId);
     timer.status = 'done';
     timer.element.dataset.status = timer.status;
@@ -90,14 +110,14 @@ function startTimer() {
 }
 
 function pauseTimer() {
-  console.log(`Timer Pause: ${timer.secondsRemaining} secs remaining`);
+  // console.log(`Timer Pause: ${timer.secondsRemaining} secs remaining`);
   timer.status = 'paused';
   timer.element.dataset.status = timer.status;
   if (timer.intervalId) clearInterval(timer.intervalId);
 }
 
 function playTimer() {
-  console.log(`Timer Play: ${timer.secondsRemaining} secs remaining`);
+  // console.log(`Timer Play: ${timer.secondsRemaining} secs remaining`);
   startTimer();
 }
 
@@ -121,7 +141,7 @@ function timerToggleStatus() {
 function timerToggleSound() {
   timer.playSounds = !timer.playSounds;
   timer.element.dataset.sound = timer.playSounds;
-  console.log('Sound effects:', timer.playSounds ? 'On' : 'Off');
+  // console.log('Sound effects:', timer.playSounds ? 'On' : 'Off');
 }
 
 function timerReset() {

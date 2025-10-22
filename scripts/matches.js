@@ -278,8 +278,8 @@ function populateCurrentMatch() {
 function initializeSchedule() {
   if (!eventMatches) return;
 
-  console.log('New event matches:', eventMatches);
-  console.log('Max match number:', maxMatchNumber());
+  // console.log('New event matches:', eventMatches);
+  // console.log('Max match number:', maxMatchNumber());
 
   populateMatchSchedule();
   populateCurrentMatch();
@@ -296,23 +296,20 @@ function clearMatchScheduleModifiers() {
 function updateMatchScheduleModifiers() {
   clearMatchScheduleModifiers();
 
-  // adjust scroll padding to account for table header
-  const headerBlockSize = scheduleTableHeaderElement.offsetHeight;
-  scheduleTableContainer.style.scrollPaddingBlockStart = `${headerBlockSize}px`;
-
+  // set new current and next match rows
   const currentMatchRow = scheduleTableBodyElement.querySelector(
     `tr[data-match-number="${currentMatchNumber}"]`
   );
   currentMatchRow.classList.add('current');
-  currentMatchRow.scrollIntoView({
-    behavior: 'smooth',
-    container: 'nearest',
-    block: 'start',
-    inline: 'nearest',
-  });
-
   const nextMatchRow = currentMatchRow.nextElementSibling;
   nextMatchRow?.classList.add('next');
+
+  // scroll the schedule container to the current match
+  // (adjust scroll padding to account for table header)
+  scheduleTableContainer.scroll({
+    top: currentMatchRow.offsetTop - scheduleTableHeaderElement.offsetHeight,
+    behavior: 'smooth',
+  });
 }
 
 function goToMatch(newMatchNumber) {
