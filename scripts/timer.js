@@ -70,26 +70,8 @@ function executeTimerIteration() {
 
   if (msecsRemaining < 0) {
     // console.log('Timer finished!');
-    // Play the timer ending sound
-    if (timer.playSounds) {
-      audioTimerEnd
-        .play()
-        .then(() => {
-          // console.log('Audio playback started successfully.');
-        })
-        .catch((error) => {
-          console.error('Audio playback failed:', error);
-          // Handle specific error types, e.g., NotAllowedError for autoplay issues
-          if (error.name === 'NotAllowedError') {
-            console.log(
-              'Autoplay was blocked. User interaction required to play audio.'
-            );
-            // Display a play button or prompt the user to interact
-          } else {
-            console.log('An unexpected error occurred during playback.');
-          }
-        });
-    }
+    // restart the timer ending sound
+    if (timer.playSounds) audioTimerEnd.play();
     clearInterval(timer.intervalId);
     timer.status = 'done';
     timer.element.dataset.status = timer.status;
@@ -171,16 +153,60 @@ function executeMatchCountdownIteration() {
   }
 }
 
+function startSoundEffects() {
+  if (timer.playSounds) {
+    // See example: https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay#the_play_method
+
+    // Timer Start sound effect
+    const audioTimerStartPromise = audioTimerStart.play();
+    if (audioTimerStartPromise !== undefined)
+      audioTimerStartPromise
+        .then(() => {
+          // Timer End sound effect
+          // console.log('Start timer sound effect: successfully started');
+          audioTimerEnd
+            .play()
+            .then(() => {
+              // mark the end audio element as approved by the user, but pause it immediately
+              // console.log('End timer sound effect: successfully started');
+              audioTimerEnd.pause();
+              audioTimerEnd.currentTime = 0;
+              // console.log('End timer sound effect: immediately paused');
+            })
+            .catch((error) => {
+              console.error('End timer sound effect failed:', error);
+              if (error.name === 'NotAllowedError') {
+                console.log(
+                  'Autoplay was blocked. User interaction required to play audio.'
+                );
+              } else {
+                console.log(
+                  'An unexpected error occurred during attempted audio playback.'
+                );
+              }
+            });
+        })
+        .catch((error) => {
+          console.error('Start timer sound effect failed:', error);
+          if (error.name === 'NotAllowedError') {
+            console.log(
+              'Autoplay was blocked. User interaction required to play audio.'
+            );
+          } else {
+            console.log(
+              'An unexpected error occurred during attempted audio playback.'
+            );
+          }
+        });
+  }
+}
+
 function startMatchCountdown() {
   dialogStartMatch.showModal();
-
   matchCountdownCount = 3;
-
   executeMatchCountdownIteration();
-
   matchCountdownIntervalId = setInterval(executeMatchCountdownIteration, 1000);
-
-  if (timer.playSounds) audioTimerStart.play();
+  startSoundEffects();
 }
 
 // ----------------------------------------
