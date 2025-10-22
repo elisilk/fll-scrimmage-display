@@ -1,3 +1,5 @@
+// ** This file is currently not used. Was initially used to generate the schedule automatically. But now switched to importing a CSV file with the team info and the match schedule already defined. **
+
 // SCHEDULE
 
 // Configuration

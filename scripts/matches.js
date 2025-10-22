@@ -42,9 +42,9 @@ function readDefaultDataFile() {
     .then((response) => response.text())
     .then((csvContent) => {
       // Process the CSV content here
-      console.log(csvContent);
+      // console.log(csvContent);
       eventMatches = normalizeData(processCsvData(csvContent));
-      console.log(eventMatches);
+      // console.log(eventMatches);
       initializeSchedule();
     })
     .catch((error) => console.error('Error loading CSV:', error));
