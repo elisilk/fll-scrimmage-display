@@ -62,6 +62,7 @@ Known issues (specific areas that the solution should be improved):
 
 Feature requests (enhancements to consider making) 🤔:
 
+- [ ] Have the break show up in the current match in some way rather than just be skipped over.
 - [ ] Improve styling of the current match section, especially better highlighting of the current match number.
 - [ ] Add an on-deck or next-up-in-the-queue to the current match section.
 - [ ] Open a full-display alert dialog when the timer has completed.
