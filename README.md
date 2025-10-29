@@ -52,7 +52,10 @@ Users should be able to:
 Known issues (specific areas that the solution should be improved):
 
 - [ ] In the match schedule table, there is a transparent border spacing around the cells that allows user to see the cells underneath the header as the table is scrolled up vertically.
-- [ ] The game over sound effect doesn't play on iPhone Safari or Chrome (but does on Firefox). Investigate on a different device to see if this is a caching issue, or some other problem.
+- [ ] Remove the delay between the start of the timer and the countdown of the first second.
+- [ ] The game over sound effect doesn't play on iPhone Safari or Chrome (but does on Firefox), most likely due to an autoplay permissions issue:
+  - [MDN Autoplay guide for media and Web Audio APIs > The play() method](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay#the_play_method)
+  - [How to autoplay audio when the countdown timer is finished?](https://stackoverflow.com/questions/55490155/how-to-autoplay-audio-when-the-countdown-timer-is-finished)
 - [x] Clean up styling of the countdown dialog so doesn't overflow and so it doesn't have a border or shadow.
 - [x] On mobile devices, when moving to next match, prevent scrolling to the top of the match schedule table and/or initiate the page scrolling to a different desirable element (e.g., the timer).
 - [x] The match schedule table gets crowded at middle viewport sizes. Hide a column and/or transition to a one-column format sooner.
