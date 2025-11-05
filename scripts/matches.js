@@ -1,5 +1,7 @@
 // MATCHES
 
+import { timerReset } from './timer.js';
+
 // ----------------------------------------
 // Configuration
 // ----------------------------------------
@@ -317,6 +319,7 @@ function goToMatch(newMatchNumber) {
     console.error('Invalid match number:', newMatchNumber);
     return;
   }
+  timerReset();
   currentMatchNumber = newMatchNumber;
   populateCurrentMatch();
   updateMatchScheduleModifiers();

@@ -126,7 +126,7 @@ function timerToggleSound() {
   // console.log('Sound effects:', timer.playSounds ? 'On' : 'Off');
 }
 
-function timerReset() {
+export function timerReset() {
   timer.element.dataset.sound = timer.playSounds;
   setupTimer(timer.secondsTotal);
 }
