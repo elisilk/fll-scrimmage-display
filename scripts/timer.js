@@ -106,8 +106,10 @@ function playTimer() {
 function timerToggleStatus() {
   switch (timer.status) {
     case 'ready':
-    case 'paused':
       playTimer();
+      break;
+    case 'paused':
+      timerReset();
       break;
     case 'playing':
       pauseTimer();

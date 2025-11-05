@@ -158,6 +158,7 @@ section {
 }
 
 .section--timer:has([data-status='playing']) .icon--play,
+.section--timer:has([data-status='paused']) .icon--play,
 .section--timer:has([data-status='done']) .icon--play {
   display: none;
 }
@@ -169,8 +170,7 @@ section {
 }
 
 .section--timer:has([data-status='ready']) .icon--reset,
-.section--timer:has([data-status='playing']) .icon--reset,
-.section--timer:has([data-status='paused']) .icon--reset {
+.section--timer:has([data-status='playing']) .icon--reset {
   display: none;
 }
 
