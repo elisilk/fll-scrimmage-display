@@ -200,6 +200,36 @@ section {
 
 .dialog {
   overflow: clip;
+  display: none;
+  opacity: 0;
+  transition-property: display, opacity, overlay;
+  transition-duration: 0.5s;
+  transition-behavior: allow-discrete;
+}
+
+.dialog[open] {
+  display: flex;
+  opacity: 1;
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.dialog::backdrop {
+  opacity: 0;
+  transition-property: display, opacity, overlay;
+  transition-duration: 0.5s;
+  transition-behavior: allow-discrete;
+}
+
+.dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .dialog[open]::backdrop {
+    opacity: 0;
+  }
 }
 
 .dialog article {

@@ -23,6 +23,7 @@ const timer = {
   playSounds: true,
   secondsTotal: defaultTimerStartValue,
   secondsRemaining: defaultTimerStartValue,
+  endInMsecs: null,
 };
 
 // ----------------------------------------
@@ -60,11 +61,8 @@ function setupTimer(seconds) {
   updateTimerDisplay();
 }
 
-let nowInMsecs;
-let endInMsecs;
-
 function executeTimerIteration() {
-  const msecsRemaining = endInMsecs - Date.now();
+  const msecsRemaining = timer.endInMsecs - Date.now();
   timer.secondsRemaining = Math.round(msecsRemaining / 1000);
   updateTimerDisplay();
 
@@ -84,8 +82,7 @@ function startTimer() {
   timer.status = 'playing';
   timer.element.dataset.status = timer.status;
 
-  nowInMsecs = Date.now();
-  endInMsecs = nowInMsecs + timer.secondsRemaining * 1000;
+  timer.endInMsecs = Date.now() + timer.secondsRemaining * 1000;
 
   executeTimerIteration();
   timer.intervalId = setInterval(executeTimerIteration, 1000);
@@ -108,12 +105,10 @@ function timerToggleStatus() {
     case 'ready':
       playTimer();
       break;
-    case 'paused':
-      timerReset();
-      break;
     case 'playing':
       pauseTimer();
       break;
+    case 'paused':
     case 'done':
       timerReset();
       break;
@@ -147,12 +142,13 @@ function executeMatchCountdownIteration() {
   dialogStartMatchContent.innerHTML = `${
     matchCountdownCount < 1 ? 'LEGO!' : matchCountdownCount
   }`;
-  matchCountdownCount--;
-  if (matchCountdownCount < -1) {
+  console.log(matchCountdownCount);
+  if (matchCountdownCount < 1) {
     playTimer();
     clearInterval(matchCountdownIntervalId);
-    dialogStartMatch.close();
+    setTimeout(() => dialogStartMatch.close(), 500);
   }
+  matchCountdownCount--;
 }
 
 function startSoundEffects() {
