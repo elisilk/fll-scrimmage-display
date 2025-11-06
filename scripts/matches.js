@@ -207,7 +207,9 @@ function generateTeamHTML(team) {
 
 function generateMatchTableRowHTML(match) {
   return `
-    <tr data-activity-type="match" data-match-number="${match.matchNumber}">
+    <tr data-activity-type="match" data-match-number="${
+      match.matchNumber
+    }" tabindex="0">
       <th scope="row">
         <div>${match.matchNumber}</div>
         <div class="hide-on-narrow">${match.time}</div>
@@ -263,12 +265,16 @@ function populateMatchSchedule() {
     })
     .join('');
   // add event listeners on each table row
-  Array.from(scheduleTableBodyElement.children).forEach((row) =>
+  Array.from(scheduleTableBodyElement.children).forEach((row) => {
     row.addEventListener('click', () => {
       if (row.dataset.activityType === 'match')
         goToMatch(parseInt(row.dataset.matchNumber));
-    })
-  );
+    });
+    row.addEventListener('keydown', (event) => {
+      if (row.dataset.activityType === 'match' && event.key === 'Enter')
+        goToMatch(parseInt(row.dataset.matchNumber));
+    });
+  });
 }
 
 function populateCurrentMatch() {

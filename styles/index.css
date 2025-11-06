@@ -48,6 +48,7 @@
 
   --color-red: var(--pico-color-red-500);
   --color-blue: var(--pico-color-blue-500);
+  --color-focus: var(--pico-color-amber-300);
 
   /* pico overrides */
   --pico-grid-column-gap: 3rem;
@@ -326,8 +327,17 @@ section {
   text-transform: uppercase;
 }
 
-.schedule tr {
+.schedule tr[data-activity-type='match'] {
   cursor: pointer;
+}
+
+.schedule tr[data-activity-type='match']:focus-visible {
+  outline: var(--pico-outline-width) solid var(--color-focus);
+  outline-offset: calc(-1 * var(--pico-outline-width));
+}
+
+.schedule tr[data-activity-type='break'] {
+  cursor: not-allowed;
 }
 
 .schedule th,
