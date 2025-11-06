@@ -142,7 +142,6 @@ function executeMatchCountdownIteration() {
   dialogStartMatchContent.innerHTML = `${
     matchCountdownCount < 1 ? 'LEGO!' : matchCountdownCount
   }`;
-  console.log(matchCountdownCount);
   if (matchCountdownCount < 1) {
     playTimer();
     clearInterval(matchCountdownIntervalId);
