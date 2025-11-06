@@ -262,6 +262,13 @@ function populateMatchSchedule() {
         : generateBreakTableRowHTML(activity);
     })
     .join('');
+  // add event listeners on each table row
+  Array.from(scheduleTableBodyElement.children).forEach((row) =>
+    row.addEventListener('click', () => {
+      if (row.dataset.activityType === 'match')
+        goToMatch(parseInt(row.dataset.matchNumber));
+    })
+  );
 }
 
 function populateCurrentMatch() {

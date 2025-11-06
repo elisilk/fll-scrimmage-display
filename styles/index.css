@@ -326,6 +326,10 @@ section {
   text-transform: uppercase;
 }
 
+.schedule tr {
+  cursor: pointer;
+}
+
 .schedule th,
 .schedule td {
   vertical-align: top;
