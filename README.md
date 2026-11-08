@@ -66,10 +66,10 @@ Feature requests (enhancements to consider making) 🤔:
 - [ ] Improve styling of the current match section, especially better highlighting of the current match number.
 - [ ] Add an on-deck or next-up-in-the-queue to the current match section.
 - [ ] Open a full-display alert dialog when the timer has completed.
-- [ ] Style the timer to be a different color (or some other visual indicator) as the timer gets close to 0 (possibly the last 10 seconds).
-- [ ] Include an audio countdown (or some other audio indicator) as the timer gets close to 0 (possibly the last 10 seconds).
 - [ ] Add a progress bar for the timer countdown progress.
 - [ ] Have a dropdown for different sound effect choices.
+- [x] Style the timer to be a warning color (or some other visual indicator) as the timer approaches 0 (possibly the last 10 seconds).
+- [x] Include an audio warning countdown (or some other audio indicator) as the timer approaches 0 (possibly the last 10 seconds).
 - [x] Change Pico color scheme (see [Pico > Version Picker > Theme color](https://picocss.com/docs/version-picker/))
 - [x] Combine the start and play buttons so the 3-2-1-LEGO! countdown is done automatically.
 - [x] Include sound to indicate both the start of the timer (the LEGO!) and the end of the timer (Time's up!).

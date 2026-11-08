@@ -50,6 +50,9 @@
   --color-blue: var(--pico-color-blue-500);
   --color-focus: var(--pico-color-amber-300);
 
+  --color-timer-end: var(--pico-color-red-500);
+  --color-timer-warning: var(--pico-color-amber-500);
+
   /* pico overrides */
   --pico-grid-column-gap: 3rem;
 }
@@ -112,29 +115,67 @@ section {
 }
 
 .timer {
+  display: inline-block;
   font-size: var(--fs-900);
   line-height: 1;
   margin-block-end: 2rem;
   padding-inline: 1rem;
+  transition: color 0.5s ease;
 }
 
-.timer--ended {
-  animation: end-animation 1s forwards;
-  color: var(--color-red);
+.timer--warning {
+  color: var(--color-timer-warning);
+  animation: timer-warning-pulse 1s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.timer--end {
+  color: var(--color-timer-end);
+  animation: timer-ending-shake 0.25s linear 10;
+  will-change: translate, rotate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer--warning,
+  .timer--end {
+    animation: none;
+  }
+}
+
+@keyframes timer-warning-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes timer-ending-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(4px) rotate(2deg);
+  }
 }
 
 @keyframes end-animation {
-  0% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
   50% {
     transform: scale(1.2);
     opacity: 0.8;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
   }
 }
 
@@ -300,7 +341,7 @@ section {
 .schedule__container {
   max-block-size: 60vb;
   overflow-y: auto;
-  // overscroll-behavior: none;
+  /* overscroll-behavior: none; */
   scroll-padding-block-start: 90px;
   position: relative; /* Important for sticky positioning */
 
@@ -407,7 +448,7 @@ table.striped tbody tr.next td {
 /* Utility classes      */
 /* -------------------- */
 
-/* screen reader only */
+/* team colors */
 
 .color-red {
   color: var(--color-red);

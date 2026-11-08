@@ -4,13 +4,18 @@
 // Configuration
 // ----------------------------------------
 
-// const defaultTimerStartValue = 5; // shorter countdown, for testing purposes
+// const defaultTimerStartValue = 12; // shorter countdown, for testing purposes
 const defaultTimerStartValue = 150; // 2:30 = 150 seconds
+const defaultTimerWarningValue = 10; // seconds
 
 const audioTimerStart = new Audio('sounds/robotic-countdown-43935.mp3');
 const audioTimerEnd = new Audio(
-  'sounds/game-over-deep-male-voice-clip-352695.mp3'
+  'sounds/game-over-deep-male-voice-clip-352695.mp3',
 );
+const audioTimerWarning = new Audio(
+  'sounds/universfield-old-clock-ticking-352288.mp3',
+);
+audioTimerWarning.loop = true;
 
 // ----------------------------------------
 // State
@@ -23,6 +28,8 @@ const timer = {
   playSounds: true,
   secondsTotal: defaultTimerStartValue,
   secondsRemaining: defaultTimerStartValue,
+  secondsWarning: defaultTimerWarningValue,
+  hasPlayedWarning: false,
   endInMsecs: null,
 };
 
@@ -49,15 +56,24 @@ function updateTimerDisplay() {
   timer.element.textContent = displayTimeRemaining;
 }
 
+function resetWarningAudio() {
+  audioTimerWarning.pause();
+  audioTimerWarning.currentTime = 0;
+  timer.hasPlayedWarning = false;
+}
+
 function setupTimer(seconds) {
   // console.log(`Timer Setup: ${seconds} secs`);
-  timer.element.classList.remove('timer--ended'); // remove the animation class
+  timer.element.classList.remove('timer--end'); // remove the animation class
+  timer.element.classList.remove('timer--warning');
   if (timer.intervalId) clearInterval(timer.intervalId);
   if (seconds < 0) return;
   timer.secondsTotal = seconds;
   timer.secondsRemaining = seconds;
   timer.status = 'ready';
   timer.element.dataset.status = timer.status;
+
+  resetWarningAudio();
   updateTimerDisplay();
 }
 
@@ -66,15 +82,26 @@ function executeTimerIteration() {
   timer.secondsRemaining = Math.round(msecsRemaining / 1000);
   updateTimerDisplay();
 
-  if (msecsRemaining < 0) {
+  if (msecsRemaining <= 0) {
     // console.log('Timer finished!');
     // restart the timer ending sound
-    if (timer.playSounds) audioTimerEnd.play();
+    if (timer.playSounds) {
+      audioTimerWarning.pause();
+      audioTimerWarning.currentTime = 0;
+      audioTimerEnd.play();
+    }
     clearInterval(timer.intervalId);
     timer.status = 'done';
     timer.element.dataset.status = timer.status;
-    timer.element.classList.add('timer--ended');
-    return;
+    timer.element.classList.remove('timer--warning');
+    timer.element.classList.add('timer--end');
+  } else if (timer.secondsRemaining <= timer.secondsWarning) {
+    if (timer.playSounds && !timer.hasPlayedWarning) {
+      audioTimerWarning.play();
+      timer.hasPlayedWarning = true;
+    }
+    timer.element.classList.add('timer--warning');
+    timer.element.classList.remove('timer--end');
   }
 }
 
@@ -101,6 +128,9 @@ function playTimer() {
 }
 
 function timerToggleStatus() {
+  resetWarningAudio();
+  timer.element.classList.remove('timer--warning');
+
   switch (timer.status) {
     case 'ready':
       playTimer();
@@ -174,24 +204,29 @@ function startSoundEffects() {
               console.error('End timer sound effect failed:', error);
               if (error.name === 'NotAllowedError') {
                 console.log(
-                  'Autoplay was blocked. User interaction required to play audio.'
+                  'Autoplay was blocked. User interaction required to play audio.',
                 );
               } else {
                 console.log(
-                  'An unexpected error occurred during attempted audio playback.'
+                  'An unexpected error occurred during attempted audio playback.',
                 );
               }
             });
+
+          audioTimerWarning.play().then(() => {
+            audioTimerWarning.pause();
+            audioTimerWarning.currentTime = 0;
+          });
         })
         .catch((error) => {
           console.error('Start timer sound effect failed:', error);
           if (error.name === 'NotAllowedError') {
             console.log(
-              'Autoplay was blocked. User interaction required to play audio.'
+              'Autoplay was blocked. User interaction required to play audio.',
             );
           } else {
             console.log(
-              'An unexpected error occurred during attempted audio playback.'
+              'An unexpected error occurred during attempted audio playback.',
             );
           }
         });
@@ -223,7 +258,7 @@ buttonSoundOnOff.addEventListener('click', timerToggleSound);
 document.querySelectorAll('.btn--timer-preset').forEach((button) =>
   button.addEventListener('click', (event) => {
     setupTimer(event.target.dataset.time);
-  })
+  }),
 );
 
 // ----------------------------------------
