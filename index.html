@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -137,26 +137,7 @@
               />
             </svg>
           </button>
-        </div>
-      </section>
 
-      <section
-        class="section--current"
-        aria-labelledby="section-heading-current-match"
-      >
-        <h2 id="section-heading-current-match">
-          Current Match: <span class="current-match__number"></span>
-        </h2>
-        <div class="current-match"></div>
-      </section>
-
-      <section
-        class="section--schedule"
-        aria-labelledby="section-heading-match-schedule"
-      >
-        <h2 id="section-heading-match-schedule">Match Schedule</h2>
-
-        <form class="schedule__controls">
           <button class="btn btn--previous-match" type="button">
             <svg
               class="icon icon--previous-match"
@@ -173,16 +154,6 @@
             </svg>
           </button>
 
-          <input
-            type="number"
-            class="schedule__input"
-            id="current-match-number"
-            name="current-match-number"
-            min="1"
-            value="1"
-            aria-label="Current Match Number"
-          />
-
           <button class="btn btn--next-match" type="button">
             <svg
               class="icon icon--next-match"
@@ -198,7 +169,40 @@
               />
             </svg>
           </button>
-        </form>
+        </div>
+      </section>
+
+      <section
+        class="section--current"
+        aria-labelledby="section-heading-current-match"
+      >
+        <header>
+          <h2 id="section-heading-current-match">
+            Current Match:
+            <span class="current-match__number"></span>
+          </h2>
+
+          <form class="schedule__controls">
+            <input
+              type="number"
+              class="schedule__input"
+              id="current-match-number"
+              name="current-match-number"
+              min="1"
+              value="1"
+              aria-label="Current Match Number"
+            />
+          </form>
+        </header>
+
+        <div class="current-match"></div>
+      </section>
+
+      <section
+        class="section--schedule"
+        aria-labelledby="section-heading-match-schedule"
+      >
+        <h2 id="section-heading-match-schedule">Match Schedule</h2>
 
         <div class="schedule__container">
           <table class="schedule striped">

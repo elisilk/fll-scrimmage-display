@@ -30,7 +30,7 @@ const minMatchNumber = () => 1;
 const maxMatchNumber = () =>
   eventMatches.reduce(
     (curr, next) => (next.matchNumber > curr ? next.matchNumber : curr),
-    -Infinity
+    -Infinity,
   );
 
 // ----------------------------------------
@@ -145,9 +145,9 @@ function normalizeData(data) {
 // ----------------------------------------
 
 // current match
-const currentMatchNumberElement = document.querySelector(
-  '.current-match__number'
-);
+// const currentMatchNumberElement = document.querySelector(
+//   '.current-match__number'
+// );
 const currentMatchElement = document.querySelector('.current-match');
 
 // match schedule
@@ -169,7 +169,7 @@ buttonPreviousMatch.addEventListener('click', () => advanceMatchSchedule(-1));
 buttonNextMatch.addEventListener('click', () => advanceMatchSchedule(1));
 
 inputCurrentMatch.addEventListener('change', () =>
-  goToMatch(parseInt(inputCurrentMatch.value))
+  goToMatch(parseInt(inputCurrentMatch.value)),
 );
 
 // ----------------------------------------
@@ -284,7 +284,7 @@ function populateCurrentMatch() {
   inputCurrentMatch.value = currentMatchNumber;
 
   // set the current match number display value
-  currentMatchNumberElement.innerHTML = currentMatchInfo.matchNumber;
+  // currentMatchNumberElement.innerHTML = currentMatchInfo.matchNumber;
 
   // update the current match teams section
   currentMatchElement.innerHTML = generateCurrentMatchHTML(currentMatchInfo);
@@ -313,7 +313,7 @@ function updateMatchScheduleModifiers() {
 
   // set new current and next match rows
   const currentMatchRow = scheduleTableBodyElement.querySelector(
-    `tr[data-match-number="${currentMatchNumber}"]`
+    `tr[data-match-number="${currentMatchNumber}"]`,
   );
   currentMatchRow.classList.add('current');
   const nextMatchRow = currentMatchRow.nextElementSibling;

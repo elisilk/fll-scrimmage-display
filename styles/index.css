@@ -288,6 +288,17 @@ section {
 /* Current Match        */
 /* -------------------- */
 
+.section--current > header {
+  margin-block-end: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  h2 {
+    margin-block-end: 0;
+  }
+}
+
 .current-match {
   display: grid;
   grid-template-areas: 'sideA vs sideB';
@@ -297,13 +308,6 @@ section {
 
   container-type: inline-size;
   container-name: current-match-container;
-}
-
-.current-match__num {
-  grid-area: match;
-  justify-self: center;
-  font-size: 3rem;
-  font-weight: 500;
 }
 
 .current-match__side {
@@ -339,7 +343,7 @@ section {
 }
 
 .schedule__container {
-  max-block-size: 60vb;
+  max-block-size: 70vb;
   overflow-y: auto;
   /* overscroll-behavior: none; */
   scroll-padding-block-start: 90px;
@@ -412,14 +416,35 @@ table.striped tbody tr.next td {
   gap: 1rem;
 }
 
-.schedule__controls > *,
-.schedule__controls > input {
+.schedule__controls > * {
   margin-block-end: 0;
 }
 
 .schedule__controls > input {
+  --pad-block: 0.25rem;
+  --pad-inline: 0.75rem;
+
+  field-sizing: content;
+  width: unset;
+  min-width: 3ch;
+  max-width: 10ch;
+  height: unset;
+
+  position: relative;
+  margin-block-end: 0;
   text-align: center;
-  inline-size: 5rem;
+  padding: var(--pad-block) var(--pad-inline);
+
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.schedule__controls > input[type='number']::-webkit-inner-spin-button {
+  position: absolute;
+  right: calc(0.5 * var(--pad-inline));
+  top: calc(2 * var(--pad-block));
+  bottom: calc(2 * var(--pad-block));
 }
 
 /* -------------------- */
