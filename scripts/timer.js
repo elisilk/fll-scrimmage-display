@@ -4,7 +4,7 @@
 // Configuration
 // ----------------------------------------
 
-// const defaultTimerStartValue = 12; // shorter countdown, for testing purposes
+// const defaultTimerStartValue = 20; // shorter countdown, for testing purposes
 const defaultTimerStartValue = 150; // 2:30 = 150 seconds
 const defaultTimerWarningValue = 10; // seconds
 
