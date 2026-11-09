@@ -291,6 +291,7 @@ section {
 .section--current > header {
   margin-block-end: 1rem;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 
@@ -313,6 +314,8 @@ section {
 .current-match__side {
   margin-bottom: 0;
   text-align: center;
+  color: var(--pico-primary-inverse);
+  background-color: var(--pico-primary-background);
 }
 
 .current-match__side header {
@@ -409,6 +412,28 @@ table.striped tbody tr.next td {
   background-color: var(--pico-secondary-background);
 }
 
+table tbody tr.current th::after,
+table tbody tr.next th::after {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1;
+  padding: 0.3em 0.6em;
+  border-radius: 0.75em;
+  text-transform: uppercase;
+}
+
+table tbody tr.current th::after {
+  background-color: var(--pico-primary-inverse);
+  color: var(--pico-primary-background);
+  content: 'Current';
+}
+
+table tbody tr.next th::after {
+  background-color: var(--pico-secondary-inverse);
+  color: var(--pico-secondary-background);
+  content: 'Up Next';
+}
+
 .schedule__controls {
   display: flex;
   align-items: center;
@@ -435,7 +460,7 @@ table.striped tbody tr.next td {
   text-align: center;
   padding: var(--pad-block) var(--pad-inline);
 
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   line-height: 1;
 }
